@@ -1,6 +1,5 @@
 #!/bin/bash
 
-CLIENTNAME=$1
 OVPN_DATA="ovpn-data"
 docker run --name $OVPN_DATA -v /etc/openvpn busybox
 
@@ -18,5 +17,3 @@ script
 end script' | sudo tee /etc/init/docker-openvpn.conf
 
 sudo start docker-openvpn
-docker run --volumes-from $OVPN_DATA --rm -it kylemanna/openvpn easyrsa build-client-full $CLIENTNAME nopass
-docker run --volumes-from $OVPN_DATA --rm kylemanna/openvpn ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn
