@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 OVPN_DATA="ovpn-data"
 CLIENTNAME=$1
 docker run --volumes-from $OVPN_DATA --rm -it kylemanna/openvpn easyrsa build-client-full $CLIENTNAME nopass

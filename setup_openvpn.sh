@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 OVPN_DATA="ovpn-data"
 docker run --name $OVPN_DATA -v /etc/openvpn busybox
 
