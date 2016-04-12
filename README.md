@@ -1,31 +1,26 @@
 # docker-openvpn-setup
 
-This setup procedure assumes the following:
+The scripts are compiled from [this](https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04) DigitalOcean community tutorial.
 
-* you are using Ubuntu Trusty 14.04
+This setup procedure assumes you are using Ubuntu Trusty 14.04 LTS.
 
 ## Setup docker on your machine
 
+Run the [docker installer script](/install_docker.sh) or the following:
+
 ```bash
-sudo apt-get update
-sudo apt-get install apt-transport-https ca-certificates
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee /etc/apt/sources.list.d/docker.list
-sudo apt-get update
-sudo apt-cache policy docker-engine
-sudo apt-get install linux-image-extra-$(uname -r) linux-image-generic-lts-trusty docker-engine
-sudo usermod -aG docker $USER
+bash <(curl -s https://raw.githubusercontent.com/yifanzz/docker-openvpn-setup/master/install_docker.sh)
 ```
 
 ## Setup OpenVPN image
 
-Run the following to setup the openvpn docker image.
+Run this [script](/setup_openvpn.sh) to setup the openvpn docker image or run the follwing
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/yifanzz/docker-openvpn-setup/master/setup_openvpn.sh)
 ```
 
-Run the following to setup new user profiles
+Run this [script](/generate_new_vpn_profile.sh) to setup a new user profiles
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/yifanzz/docker-openvpn-setup/master/generate_new_vpn_profile.sh) PROFILE_NAME
